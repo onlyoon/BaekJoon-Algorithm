@@ -1,15 +1,12 @@
-const input = +require("fs")
-  .readFileSync("/dev/stdin")
-  .toString()
-  .trim();
+const fs = require("fs");
 
-function solution(num) {
-  if (num === 0) {
-    return 1;
-  }
+const input = +fs.readFileSync("/dev/stdin").toString().trim();
 
-  return num * solution(num - 1);
+const recursion = (num) => {
+    if (num === 1 || num === 0) {
+        return 1;
+    }
+    return (num * recursion(num - 1));
 };
 
-console.log(solution(input));
-
+console.log(recursion(input));
